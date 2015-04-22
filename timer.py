@@ -3,6 +3,7 @@ import time
 import praw
 import re
 import datetime
+import getpass
 
 def timeTil(): #Returns a formatted length until the event
      td = datetime.datetime(year, month, day, hour, minute, 0) - datetime.datetime.now()
@@ -13,7 +14,7 @@ def timeTil(): #Returns a formatted length until the event
 
 user_agent = ("Timer tests v0.1.5 by /u/bobjrsenior") #Let reddit know who you are
 r = praw.Reddit(user_agent=user_agent)
-r.login(input('Username: '), input('Password: ')) #Input username, pass here
+r.login(input('Username: '), getpass.getpass()) #Input username, pass here
 subredditName = input('Subreddit Name: ') #Name of the subreddit
 subreddit = r.get_subreddit(subredditName)  #get the subreddit
 updateSpeed = 60 #Update the timer every _ seconds
