@@ -5,13 +5,13 @@ import re
 import datetime
 
 def timeTil(): #Returns a formatted length until the event
-     td = datetime.datetime(year, month, day, hour, minute, second) - datetime.datetime.now()
+     td = datetime.datetime(year, month, day, hour, minute, 0) - datetime.datetime.now()
      days = td.days
      hours = int(td.seconds / 3600)
      minutes = int(td.seconds / 60) - (hours * 60) 
      return keyword + ': ' + str(days) + 'd:' + str(hours) + 'h:' + str(minutes) + 'm' + endKeyword
 
-user_agent = ("Timer tests v0.1.4 by /u/bobjrsenior") #Let reddit know who you are
+user_agent = ("Timer tests v0.1.5 by /u/bobjrsenior") #Let reddit know who you are
 r = praw.Reddit(user_agent=user_agent)
 r.login(input('Username: '), input('Password: ')) #Input username, pass here
 subredditName = input('Subreddit Name: ') #Name of the subreddit
@@ -20,7 +20,7 @@ updateSpeed = 60 #Update the timer every _ seconds
 
 #get inputs for dates and such
 keyword = input('Keyword in sidebar to find: ')
-endKeyword = input('Keyword that marks the end of the countdown (\\\\n if new line): ')
+endKeyword = input('Keyword that marks the end of the countdown (\\n if new line): ')
 year = int(input('Year: '))
 month = int(input('Month: '))
 day = int(input('Day: '))
